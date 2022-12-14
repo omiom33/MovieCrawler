@@ -73,19 +73,20 @@ class MaoyanSpider(Spider):
                     'image': actor_image
                 })
         photos = response.xpath('//div[contains(@class, "tab-img")]//li//img[@class="default-img"]/@data-src').extract()
-        item = MovieItem({
-            'name': name,
-            'alias': alias,
-            'score': score,
-            'rank': rank,
-            'cover': cover,
-            'regions': regions,
-            'categories': categories,
-            'minute': minute,
-            'published_at': published_at,
-            'drama': drama,
-            'directors': directors,
-            'actors': actors,
-            'photos': photos,
-        })
-        yield item
+        yield MovieItem(
+            {
+                'name': name,
+                'alias': alias,
+                'score': score,
+                'rank': rank,
+                'cover': cover,
+                'regions': regions,
+                'categories': categories,
+                'minute': minute,
+                'published_at': published_at,
+                'drama': drama,
+                'directors': directors,
+                'actors': actors,
+                'photos': photos,
+            }
+        )
